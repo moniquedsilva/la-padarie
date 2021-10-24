@@ -1,64 +1,64 @@
 let queue = [
-  { id: 0, nome: 'Alexandre Shyjada Sousa', paes: 50, valor: 25 },
-  { id: 1, nome: 'Matheus Novais', paes: 50, valor: 25 },
-  { id: 2, nome: 'Victor Peixoto', paes: 50, valor: 25 },
-  { id: 3, nome: 'Kennedy Anderson', paes: 50, valor: 25 },
-  { id: 4, nome: 'João Victor', paes: 50, valor: 25 },
-  { id: 5, nome: 'Thales Brito', paes: 50, valor: 25 },
-  { id: 5, nome: 'Ivens Joris', paes: 50, valor: 25 },
+  { id: 0, name: 'Alexandre Shyjada Sousa', bread: 50, value: 25 },
+  { id: 1, name: 'Matheus Novais', bread: 50, value: 25 },
+  { id: 2, name: 'Victor Peixoto', bread: 50, value: 25 },
+  { id: 3, name: 'Kennedy Anderson', bread: 50, value: 25 },
+  { id: 4, name: 'João Victor', bread: 50, value: 25 },
+  { id: 5, name: 'Thales Brito', bread: 50, value: 25 },
+  { id: 5, name: 'Ivens Joris', bread: 50, value: 25 },
 ];
 
 const sectionQueue = document.querySelector('.client-area');
 const openModal = document.querySelector('.btn-client');
 
 /* === Menu === */
-/* === Pessoas === */
-const pessoas = (valor) => {
-  document.getElementById('pessoas-qnt').innerText = `${valor}`;
+/* === people === */
+const people = (value) => {
+  document.getElementById('amount-people').innerText = `${value}`;
 };
 
-/* === Quantidade de Pães === */
-const quantidadeVendidos = (valor) => {
-  document.getElementById('paes-qnt').innerText = `${valor}`;
+/* === Amount === */
+const amountSold = (value) => {
+  document.getElementById('amount-bread').innerText = `${value}`;
 };
 
-/* === Entrada === */
-const entrada = (valor) => {
-  valor = valor.toFixed(2);
-  let reais = valor.toString();
+/* === Entry === */
+const entry = (value) => {
+  value = value.toFixed(2);
+  let reais = value.toString();
   reais = reais.replace('.', ',');
-  document.getElementById('entrada-valor').innerText = `R$ ${reais}`;
+  document.getElementById('entry-value').innerText = `R$ ${reais}`;
 };
 
 const renderQueue = (queue) => {
-  let totalPaes = 0;
-  let totalPagar = 0;
+  let totalbread = 0;
+  let payment = 0;
   sectionQueue.innerHTML = '';
   queue.map((item, index) => {
-    const quantidade = item.paes <= 1 ? ' pão' : ' pães';
+    const amount = item.bread <= 1 ? ' pão' : ' pães';
     let clients = `<article class="client-card">
           <div class="client-text">
-            <h3>${item.nome}</h3>
+            <h3>${item.name}</h3>
             <div class="text-content">
               <p>Total de pães: <span class="text-span"> ${
-                item.paes + quantidade
+                item.bread + amount
               } <span></p>
-              <p>Total a pagar: <span class="text-span"> R$ ${item.valor
+              <p>Total a pagar: <span class="text-span"> R$ ${item.value
                 .toFixed(2)
                 .replace('.', ',')} </span></p>
             </div>
           </div>
-          <button class="remover-btn" onclick="remover(${index})">
-            <img src="./assets/Trash.svg" alt="Remover Item" />
+          <button class="remove-btn" onclick="remove(${index})">
+            <img src="./assets/Trash.svg" alt="Remove Item" />
           </button>
         </article>`;
     sectionQueue.innerHTML += clients;
-    totalPaes += parseInt(item.paes);
-    totalPagar += parseFloat(item.valor);
+    totalbread += parseInt(item.bread);
+    payment += parseFloat(item.value);
   });
-  pessoas(queue.length);
-  quantidadeVendidos(totalPaes);
-  entrada(totalPagar);
+  people(queue.length);
+  amountSold(totalbread);
+  entry(payment);
 };
 
 renderQueue(queue);
@@ -69,37 +69,38 @@ openModal.addEventListener('click', () => {
   modal.classList.add('show');
 });
 
-/* Botão Cancelar */
-const cancel = document.querySelector('.btn-cancelar');
+/* Cancel Button */
+const cancel = document.querySelector('.cancel-btn');
 cancel.addEventListener('click', () => {
   modal.classList.remove('show');
 });
 
-/* Botão Adicionar */
-const add = document.querySelector('.btn-enviar');
+/* Add Button */
+const add = document.querySelector('.btn-send');
 add.addEventListener('click', () => {
-  let nome = document.getElementById('nome-cliente').value;
-  let quantidade = document.getElementById('quantidade').value;
-  if (nome && quantidade) {
+  let name = document.getElementById('name-client').value;
+  let amount = document.getElementById('amount').value;
+  if (name && amount) {
     queue.push({
       id: queue.length,
-      nome: nome,
-      paes: quantidade,
-      valor: parseFloat(quantidade / 2),
+      name: name,
+      bread: amount,
+      value: parseFloat(amount / 2),
     });
-    limparCampos();
+    clearFields();
   }
   renderQueue(queue);
 });
 
-const limparCampos = () => {
-  let nome = (document.getElementById('nome-cliente').value = '');
-  let quantidade = (document.getElementById('quantidade').value = '');
+/* Clear input Fields */
+const clearFields = () => {
+  let name = (document.getElementById('name-client').value = '');
+  let amount = (document.getElementById('amount').value = '');
 };
 
-/* Botão Remover */
+/* Remove Button */
 
-const remover = (card) => {
+const remove = (card) => {
   queue.splice(card, 1);
   renderQueue(queue);
 };

@@ -201,7 +201,7 @@ input::-webkit-inner-spin-button {
   gap: 30px;
 }
 
-.btn-cancelar {
+.cancel-btn {
   width: 100%;
   padding: 18px 0;
   background-color: transparent;
@@ -211,7 +211,7 @@ input::-webkit-inner-spin-button {
   border-radius: 5px;
 }
 
-.btn-enviar {
+.btn-send {
   width: 100%;
   padding: 18px 0;
   background-color: #5f3305;
