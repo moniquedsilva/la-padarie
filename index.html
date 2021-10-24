@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>La Padarie</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header-area">
+      <div class="logo-conteiner">
+        <a href="#inicio">
+          <img src="./assets/Logo.svg" alt="La Padarie" />
+        </a>
+      </div>
+      <div class="menu-conteiner">
+        <div id="menu-pessoas" class="menu">
+          <div>
+            <h2>Pessoas na fila</h2>
+            <img src="./assets/Pessoas.svg" alt="Grupo de Pessoas" />
+          </div>
+          <span id="pessoas-qnt"></span>
+        </div>
+        <div id="menu-vendidos" class="menu">
+          <div>
+            <h2>Pães vendidos</h2>
+            <img src="./assets/Shop.svg" alt="Carrinho de compras" />
+          </div>
+          <span id="paes-qnt"></span>
+        </div>
+        <div id="menu-entrada" class="menu">
+          <div>
+            <h2>Entrada</h2>
+            <img src="./assets/Money.svg" alt="Entrada" />
+          </div>
+          <span id="entrada-valor"></span>
+        </div>
+      </div>
+    </header>
+    <!-- Main -->
+    <main class="main-content">
+      <!-- MODAL -->
+      <section class="new-client">
+        <button class="btn-client">+ Adicionar pessoa a fila</button>
+        <article class="modal">
+          <div class="modal-conteiner">
+            <h3>Adicionar pessoa a fila</h3>
+            <form action="" class="modal-form">
+              <label for="nome-cliente">Nome Completo</label>
+              <input
+                type="text"
+                id="nome-cliente"
+                placeholder="Nome completo do cliente"
+              />
+              <label for="quantidade">Quantidade de pães</label>
+              <input
+                type="number"
+                id="quantidade"
+                placeholder="Total de pães:"
+              />
+            </form>
+            <div class="modal-btn">
+              <button type="submit" class="btn-enviar">Enviar</button>
+              <button type="button" class="btn-cancelar">Cancelar</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Área do cliente -->
+      <section class="client-area">
+        <article class="client-card">
+          <div class="client-text">
+            <h3>Alexandre Shyjada Sousa</h3>
+            <div class="text-content">
+              <p>Total de pães: <span class="text-span"> <span></p>
+              <p>Total a pagar: <span class="text-span"> </span></p>
+            </div>
+          </div>
+          <button class="remover-btn" onclick="remover(index)">
+            <img src="./assets/Trash.svg" alt="Remover Item" />
+          </button>
+        </article>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer-area">
+        <p>Com 💛 Info Jr UFBA 2021</p>
+      </footer>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
