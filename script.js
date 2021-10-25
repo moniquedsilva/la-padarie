@@ -71,9 +71,16 @@ openModal.addEventListener('click', () => {
 
 /* Cancel Button */
 const cancel = document.querySelector('.cancel-btn');
-cancel.addEventListener('click', () => {
+const exitModal = () => {
   modal.classList.remove('show');
-});
+};
+cancel.addEventListener('click', exitModal);
+
+/* Clear input Fields */
+const clearFields = () => {
+  let name = (document.getElementById('name-client').value = '');
+  let amount = (document.getElementById('amount').value = '');
+};
 
 /* Add Button */
 const add = document.querySelector('.btn-send');
@@ -88,15 +95,21 @@ add.addEventListener('click', () => {
       value: parseFloat(amount / 2),
     });
     clearFields();
+    exitModal();
   }
   renderQueue(queue);
 });
 
-/* Clear input Fields */
-const clearFields = () => {
-  let name = (document.getElementById('name-client').value = '');
-  let amount = (document.getElementById('amount').value = '');
-};
+/* Key control */
+modal.addEventListener('keyup', (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    document.querySelector('.btn-send').click();
+  } else if (e.keyCode === 27) {
+    e.preventDefault();
+    document.querySelector('.cancel-btn').click();
+  }
+});
 
 /* Remove Button */
 
